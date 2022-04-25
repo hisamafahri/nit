@@ -15,5 +15,5 @@ fn commit(commit: &cli::Commit) {
     if commit.all {
         git::add_all_stage()
     }
-    println!("if error, should not be reachable")
+    git::input_commit_messages()
 }
