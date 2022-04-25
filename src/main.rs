@@ -23,5 +23,6 @@ fn commit(commit: &cli::Commit) {
 
 fn push() {
     git::check_git();
-    git::push();
+    let branch = git::check_branch();
+    git::push(&branch);
 }
