@@ -22,5 +22,6 @@ fn commit(commit: &cli::Commit) {
 }
 
 fn push() {
-    println!("Push commands called");
+    git::check_git();
+    git::push();
 }
