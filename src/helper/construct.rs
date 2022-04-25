@@ -1,34 +1,40 @@
-use std::io::stdin;
-use std::io::{self, Write};
+use dialoguer::{theme::ColorfulTheme, Input, Select};
 
 pub fn commit_prompt() -> String {
-    let mut types = String::new();
-    let mut scope = String::new();
-    let mut message = String::new();
-
     // Q1: Type of changes
-    print!("Type of Change?: ");
-    io::stdout().flush().unwrap();
-    stdin()
-        .read_line(&mut types)
-        .ok()
-        .expect("Failed to read line");
+    let types = &[
+        "feat: A new feature",
+        "fix: A bug fix",
+        "docs: Documentation only changes",
+        "style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+        "refactor: A code change that neither fixes a bug nor adds a feature",
+        "perf: A code change that improves performance",
+        "test: Adding missing or correcting existing tests",
+        "chore: Changes to the build process or auxiliary tools and libraries such as documentation generation",
+    ];
+
+    let selected_type = Select::with_theme(&ColorfulTheme::default())
+        .with_prompt("Type of changes?:")
+        .default(0)
+        .items(&types[..])
+        .interact()
+        .unwrap();
 
     // Q2: Scope of changes
-    print!("Scope of changes (eg. file, function, etc)?: ");
-    io::stdout().flush().unwrap();
-    stdin()
-        .read_line(&mut scope)
-        .ok()
-        .expect("Failed to read line");
+    let scope: String = Input::with_theme(&ColorfulTheme::default())
+        .with_prompt("Scope of changes (eg. file, function, etc)?:")
+        // TODO: length validation
+        .interact_text()
+        .unwrap();
 
     // Q3: Commit message
-    print!("Commit message?: ");
-    io::stdout().flush().unwrap();
-    stdin()
-        .read_line(&mut message)
-        .ok()
-        .expect("Failed to read line");
+    let message: String = Input::with_theme(&ColorfulTheme::default())
+        .with_prompt("Commit message?:")
+        // TODO: length validation
+        .interact_text()
+        .unwrap();
 
-    return format!("{}({}): {}", types.trim(), scope.trim(), message.trim());
+    let type_split: Vec<&str> = types[selected_type].split(": ").collect();
+
+    format!("{}({}): {}", type_split[0], scope, message)
 }

@@ -8,6 +8,7 @@ fn main() {
 
     match &cli.command {
         cli::Commands::Commit(all) => commit(all),
+        cli::Commands::Push => push()
     }
 }
 
@@ -18,4 +19,8 @@ fn commit(commit: &cli::Commit) {
     }
     let commit_message = helper::commit_prompt();
     git::commit(&commit_message);
+}
+
+fn push() {
+    println!("Push commands called");
 }

@@ -17,6 +17,9 @@ pub struct Cli {
 pub enum Commands {
     /// Commit staged changes on the current working directory
     Commit(Commit),
+
+    /// Push changes into remote repository
+    Push
 }
 
 #[derive(Parser)]
