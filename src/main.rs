@@ -24,5 +24,7 @@ fn commit(commit: &cli::Commit) {
 fn push() {
     git::check_git();
     let branch = git::check_branch();
+    println!("branch: {}", branch);
+    git::check_remote();
     git::push(&branch);
 }

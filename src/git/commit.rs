@@ -1,12 +1,14 @@
-use std::process;
 use crate::git::error;
+use crate::helper;
 
 pub fn commit(message: &String) {
     println!("status: comitting changes...");
-    let output = process::Command::new("git")
-        .args(["commit", "-m", &message])
-        .output()
-        .expect("error: failed to commit changes");
+    let args = [
+        String::from("commit"),
+        String::from("-m"),
+        String::from(message),
+    ];
+    let output = helper::run(&String::from("git"), &args);
 
     error::handle(&output);
 }

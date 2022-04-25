@@ -1,12 +1,10 @@
-use std::process;
 use crate::git::error;
+use crate::helper;
 
 pub fn stage_all() {
     println!("status: staging all changes in this directory...");
-    let output = process::Command::new("git")
-        .args(["add", "."])
-        .output()
-        .expect("error: failed to stage all changes in this directory");
+    let args = [String::from("add"), String::from(".")];
+    let output = helper::run(&String::from("git"), &args);
 
     error::handle(&output);
 }

@@ -1,12 +1,15 @@
-use std::process;
 use crate::git::error;
+use crate::helper;
 
 pub fn push(branch: &String) {
     println!("status: pushing changes...");
-    let output = process::Command::new("git")
-        .args(["push", "origin", &branch])
-        .output()
-        .expect("error: failed to push changes");
+
+    let args = [
+        String::from("push"),
+        String::from("origin"),
+        String::from(branch),
+    ];
+    let output = helper::run(&String::from("git"), &args);
 
     error::handle(&output);
 }
