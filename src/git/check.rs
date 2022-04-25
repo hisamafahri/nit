@@ -31,7 +31,8 @@ fn check_aliases() -> String {
     return helper::handler_string(&output);
 }
 
-pub fn check_remote() {
+pub fn check_remote() -> std::vec::Vec<std::string::String>{
+    let mut places = vec![];
     let aliases = check_aliases();
     let aliases_split: Vec<&str> = aliases.split_whitespace().collect();
     for alias in aliases_split {
@@ -43,6 +44,8 @@ pub fn check_remote() {
         ];
         let output = helper::run(&String::from("git"), &args);
 
-        helper::handler_string(&output);
-    }
+        let result = helper::handler_string(&output);
+        places.push(format!("{}: {}", alias, result));
+    };
+    places
 }
