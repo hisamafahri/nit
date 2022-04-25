@@ -15,5 +15,7 @@ fn commit(commit: &cli::Commit) {
     if commit.all {
         git::add_all_stage()
     }
-    git::input_commit_messages()
+    let commit_message = git::input_commit_messages();
+    println!("{}", commit_message);
+    git::commit(&commit_message);
 }

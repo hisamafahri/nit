@@ -32,7 +32,7 @@ pub fn add_all_stage() {
     check_error(&output);
 }
 
-pub fn input_commit_messages() {
+pub fn input_commit_messages() -> String {
     let mut types = String::new();
     let mut scope = String::new();
     let mut message = String::new();
@@ -60,6 +60,16 @@ pub fn input_commit_messages() {
         .read_line(&mut message)
         .ok()
         .expect("Failed to read line");
-    
-        println!("{}({}): {}", types.trim(), scope.trim(), message.trim());
+
+    return format!("{}({}): {}", types.trim(), scope.trim(), message.trim());
+}
+
+pub fn commit(message: &String) {
+    println!("status: comitting changes...");
+    let output = process::Command::new("git")
+        .args(["commit", "-m", &message])
+        .output()
+        .expect("error: failed to commit changes");
+
+    check_error(&output);
 }
