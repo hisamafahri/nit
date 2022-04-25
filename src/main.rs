@@ -1,6 +1,7 @@
 use clap::Parser;
 mod cli;
 mod git;
+mod helper;
 
 fn main() {
     let cli = cli::Cli::parse();
@@ -13,9 +14,8 @@ fn main() {
 fn commit(commit: &cli::Commit) {
     git::check_git();
     if commit.all {
-        git::add_all_stage()
+        git::stage_all()
     }
-    let commit_message = git::input_commit_messages();
-    println!("{}", commit_message);
+    let commit_message = helper::commit_prompt();
     git::commit(&commit_message);
 }
