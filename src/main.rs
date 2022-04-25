@@ -17,16 +17,15 @@ fn commit(commit: &cli::Commit) {
     if commit.all {
         git::stage_all()
     }
-    let commit_message = helper::commit_prompt();
+    let commit_message = helper::prompt_commit();
     git::commit(&commit_message);
 }
 
 fn push() {
     git::check_git();
     let branch = git::check_branch();
-    println!("branch: {}", branch);
     let remote = git::check_remote();
-    let selected_remote = helper::select(
+    let selected_remote = helper::prompt_build(
         &String::from("Where you want to push your changes?"),
         &remote,
     );

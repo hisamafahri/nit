@@ -6,9 +6,9 @@ pub fn check_git() {
         String::from("rev-parse"),
         String::from("--is-inside-work-tree"),
     ];
-    let output = helper::run(&String::from("git"), &args);
+    let output = helper::command_run(&String::from("git"), &args);
 
-    helper::handler(&output, ());
+    helper::output_ignore(&output);
 }
 
 pub fn check_branch() -> String {
@@ -18,17 +18,17 @@ pub fn check_branch() -> String {
         String::from("--abbrev-ref"),
         String::from("HEAD"),
     ];
-    let output = helper::run(&String::from("git"), &args);
+    let output = helper::command_run(&String::from("git"), &args);
 
-    return helper::handler_string(&output);
+    return helper::output_handle(&output);
 }
 
 fn check_aliases() -> String {
     println!("status: checking aliases...");
     let args = [String::from("remote")];
-    let output = helper::run(&String::from("git"), &args);
+    let output = helper::command_run(&String::from("git"), &args);
 
-    return helper::handler_string(&output);
+    return helper::output_handle(&output);
 }
 
 pub fn check_remote() -> std::vec::Vec<std::string::String>{
@@ -42,9 +42,9 @@ pub fn check_remote() -> std::vec::Vec<std::string::String>{
             String::from("--push"),
             String::from(alias.trim()),
         ];
-        let output = helper::run(&String::from("git"), &args);
+        let output = helper::command_run(&String::from("git"), &args);
 
-        let result = helper::handler_string(&output);
+        let result = helper::output_handle(&output);
         places.push(format!("{}: {}", alias, result));
     };
     places
