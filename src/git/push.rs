@@ -1,4 +1,3 @@
-use crate::git::error;
 use crate::helper;
 
 pub fn push(branch: &String) {
@@ -11,5 +10,5 @@ pub fn push(branch: &String) {
     ];
     let output = helper::run(&String::from("git"), &args);
 
-    error::handle(&output);
+    helper::handler(&output, ());
 }

@@ -1,4 +1,3 @@
-use crate::git::error;
 use crate::helper;
 
 pub fn stage_all() {
@@ -6,5 +5,5 @@ pub fn stage_all() {
     let args = [String::from("add"), String::from(".")];
     let output = helper::run(&String::from("git"), &args);
 
-    error::handle(&output);
+    helper::handler(&output, ());
 }

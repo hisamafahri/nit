@@ -1,6 +1,4 @@
-use crate::git::error;
 use crate::helper;
-use std::process;
 
 pub fn check_git() {
     println!("status: checking git repository...");
@@ -10,7 +8,7 @@ pub fn check_git() {
     ];
     let output = helper::run(&String::from("git"), &args);
 
-    error::handle(&output);
+    helper::handler(&output, ());
 }
 
 pub fn check_branch() -> String {
@@ -22,15 +20,7 @@ pub fn check_branch() -> String {
     ];
     let output = helper::run(&String::from("git"), &args);
 
-    match output.status.success() {
-        true => {
-            format!("{}", String::from_utf8_lossy(&output.stdout).trim())
-        }
-        false => {
-            println!("{}", String::from_utf8_lossy(&output.stderr).trim());
-            process::exit(1)
-        }
-    }
+    return helper::handler_string(&output);
 }
 
 fn check_aliases() -> String {
@@ -38,15 +28,7 @@ fn check_aliases() -> String {
     let args = [String::from("remote")];
     let output = helper::run(&String::from("git"), &args);
 
-    match output.status.success() {
-        true => {
-            format!("{}", String::from_utf8_lossy(&output.stdout).trim())
-        }
-        false => {
-            println!("{}", String::from_utf8_lossy(&output.stderr).trim());
-            process::exit(1)
-        }
-    }
+    return helper::handler_string(&output);
 }
 
 pub fn check_remote() {
@@ -60,18 +42,7 @@ pub fn check_remote() {
             String::from(alias.trim()),
         ];
         let output = helper::run(&String::from("git"), &args);
-        match output.status.success() {
-            true => {
-                println!(
-                    "{}: {}",
-                    alias,
-                    String::from_utf8_lossy(&output.stdout).trim()
-                )
-            }
-            false => {
-                println!("{}", String::from_utf8_lossy(&output.stderr).trim());
-                process::exit(1)
-            }
-        }
+
+        helper::handler_string(&output);
     }
 }

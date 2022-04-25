@@ -1,4 +1,3 @@
-use crate::git::error;
 use crate::helper;
 
 pub fn commit(message: &String) {
@@ -10,5 +9,5 @@ pub fn commit(message: &String) {
     ];
     let output = helper::run(&String::from("git"), &args);
 
-    error::handle(&output);
+    helper::handler(&output, ());
 }
