@@ -17,10 +17,10 @@ fn commit(commit: &cli::Commit) {
     let commit_message = helper::prompt::commit::commit_prompt();
     if commit.all {
         git::add::stage_all();
-        println!("\x1B[42;1m\x1B[37;1m SUCCESS: \x1B[0m\x1B[0m changes staged successfully!");
+        println!("\x1B[38;5;2m success \x1B[0m changes staged successfully!");
     }
     git::commit::commit(&commit_message);
-    println!("\x1B[42;1m\x1B[37;1m SUCCESS: \x1B[0m\x1B[0m changes successfully committed!");
+    println!("\x1B[38;5;2m success \x1B[0m changes successfully committed!");
 }
 
 fn push() {
@@ -33,5 +33,5 @@ fn push() {
     );
     let selected_remote_split: Vec<&str> = selected_remote.split(": ").collect();
     git::push::push(&String::from(selected_remote_split[0]), &branch);
-    println!("\x1B[42;1m\x1B[37;1m SUCCESS: \x1B[0m\x1B[0m changes successfully pushed!");
+    println!("\x1B[38;5;2m success \x1B[0m changes successfully pushed!");
 }
