@@ -14,10 +14,10 @@ fn main() {
 
 fn commit(commit: &cli::Commit) {
     git::check::directory();
+    let commit_message = helper::prompt::commit::commit_prompt();
     if commit.all {
         git::add::stage_all()
     }
-    let commit_message = helper::prompt::commit::commit_prompt();
     git::commit::commit(&commit_message);
 }
 
