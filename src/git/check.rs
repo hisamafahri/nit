@@ -31,7 +31,7 @@ fn aliases() -> String {
     return helper::output::handle(&output);
 }
 
-pub fn remote() -> std::vec::Vec<std::string::String>{
+pub fn remote() -> std::vec::Vec<std::string::String> {
     let mut places = vec![];
     let aliases = aliases();
     let aliases_split: Vec<&str> = aliases.split_whitespace().collect();
