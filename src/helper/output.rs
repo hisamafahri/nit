@@ -1,16 +1,16 @@
 use std::process;
 
-pub fn print(output: &process::Output) {
-    match output.status.success() {
-        true => println!("{}", String::from_utf8_lossy(&output.stdout).trim()),
-        false => {
-            println!("{}", String::from_utf8_lossy(&output.stderr).trim());
-            process::exit(1)
-        }
-    }
-}
+// pub fn print(output: &process::Output) {
+//     match output.status.success() {
+//         true => println!("{}", String::from_utf8_lossy(&output.stdout).trim()),
+//         false => {
+//             println!("{}", String::from_utf8_lossy(&output.stderr).trim());
+//             process::exit(1)
+//         }
+//     }
+// }
 
-pub fn print_out(output: &process::Output) {
+pub fn print(output: &process::Output) {
     match output.status.success() {
         true => println!("{}", String::from_utf8_lossy(&output.stdout).trim()),
         false => {

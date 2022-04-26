@@ -9,5 +9,5 @@ pub fn commit(message: &String) {
     ];
     let output = helper::command::run(&String::from("git"), &args);
 
-    helper::output::print_out(&output);
+    helper::output::print(&output);
 }
