@@ -1,4 +1,5 @@
 use crate::helper;
+use futures_lite::future;
 
 pub fn push(remote: &String, branch: &String) {
     println!("\x1B[7m STATUS: \x1B[0m pushing changes...");
@@ -8,7 +9,8 @@ pub fn push(remote: &String, branch: &String) {
         String::from(remote),
         String::from(branch),
     ];
-    let output = helper::command::run(&String::from("git"), &args);
-
-    helper::output::print(&output);
+    future::block_on(async {
+        let output = helper::command::run(&String::from("git"), &args);
+        helper::output::print(&output);
+    });
 }
