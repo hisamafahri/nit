@@ -1,4 +1,4 @@
-## nit - a git wrapper to make your git better
+## nit - A git CLI wrapper to make your git better
 
 ![cover](https://i.imgur.com/GuMKIgz.png)
 
@@ -6,7 +6,7 @@ A CLI to replace your `git` command, so your git workflow can become more consis
 
 ## Install From Source
 
-Assuming you have installed Git and Rust in your system, you can clone the repository and build it from source:
+Assuming you have installed [Git](https://github.com/git-guides/install-git) and [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
   
 ```bash
 git clone https://github.com/hisamafahri/nit
