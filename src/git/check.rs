@@ -1,7 +1,7 @@
 use crate::helper;
 
 pub fn directory() {
-    println!("\x1B[38;5;245m info \x1B[0m checking git repository...");
+    println!("\x1B[38;5;245m info \x1B[0m checking current directory...");
     let args = [
         String::from("rev-parse"),
         String::from("--is-inside-work-tree"),
@@ -9,6 +9,7 @@ pub fn directory() {
     let output = helper::command::run(&String::from("git"), &args);
 
     helper::output::ignore(&output);
+    println!("\x1B[38;5;2m success \x1B[0m directory is inside a git work tree!");
 }
 
 pub fn branch() -> String {
