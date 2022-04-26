@@ -7,7 +7,7 @@ pub fn commit(message: &String) {
         String::from("-m"),
         String::from(message),
     ];
-    let output = helper::command_run(&String::from("git"), &args);
+    let output = helper::command::run(&String::from("git"), &args);
 
-    helper::output_print(&output);
+    helper::output::print(&output);
 }

@@ -1,6 +1,6 @@
 use std::process;
 
-pub fn output_print(output: &process::Output) {
+pub fn print(output: &process::Output) {
     match output.status.success() {
         true => println!("{}", String::from_utf8_lossy(&output.stdout).trim()),
         false => {
@@ -10,7 +10,7 @@ pub fn output_print(output: &process::Output) {
     }
 }
 
-pub fn output_handle(output: &process::Output) -> String {{
+pub fn handle(output: &process::Output) -> String {{
     match output.status.success() {
         true => format!("{}", String::from_utf8_lossy(&output.stdout).trim()),
         false => {
@@ -20,7 +20,7 @@ pub fn output_handle(output: &process::Output) -> String {{
     }
 }}
 
-pub fn output_ignore(output: &process::Output) {{
+pub fn ignore(output: &process::Output) {{
     match output.status.success() {
         true => (),
         false => {

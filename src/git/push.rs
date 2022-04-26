@@ -8,7 +8,7 @@ pub fn push(remote: &String, branch: &String) {
         String::from(remote),
         String::from(branch),
     ];
-    let output = helper::command_run(&String::from("git"), &args);
+    let output = helper::command::run(&String::from("git"), &args);
 
-    helper::output_print(&output);
+    helper::output::print(&output);
 }

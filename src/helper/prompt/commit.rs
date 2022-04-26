@@ -1,6 +1,6 @@
 use dialoguer::{theme::ColorfulTheme, Input, Select};
 
-pub fn prompt_commit() -> String {
+pub fn commit_prompt() -> String {
     // Q1: Type of changes
     let types = &[
         "feat: A new feature",

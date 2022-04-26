@@ -13,22 +13,22 @@ fn main() {
 }
 
 fn commit(commit: &cli::Commit) {
-    git::check_git();
+    git::check::directory();
     if commit.all {
-        git::stage_all()
+        git::add::stage_all()
     }
-    let commit_message = helper::prompt_commit();
-    git::commit(&commit_message);
+    let commit_message = helper::prompt::commit::commit_prompt();
+    git::commit::commit(&commit_message);
 }
 
 fn push() {
-    git::check_git();
-    let branch = git::check_branch();
-    let remote = git::check_remote();
-    let selected_remote = helper::prompt_build(
+    git::check::directory();
+    let branch = git::check::branch();
+    let remote = git::check::remote();
+    let selected_remote = helper::prompt::build::select(
         &String::from("Where you want to push your changes?"),
         &remote,
     );
     let selected_remote_split: Vec<&str> = selected_remote.split(": ").collect();
-    git::push(&String::from(selected_remote_split[0]), &branch);
+    git::push::push(&String::from(selected_remote_split[0]), &branch);
 }
