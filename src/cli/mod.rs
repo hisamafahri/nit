@@ -16,9 +16,11 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     /// Commit staged changes on the current working directory
+    #[clap(alias = "c")]
     Commit(Commit),
-
+    
     /// Push changes into remote repository
+    #[clap(alias = "p")]
     Push
 }
 
