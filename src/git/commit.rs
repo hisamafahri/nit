@@ -1,7 +1,7 @@
 use crate::helper;
 
 pub fn commit(message: &String) {
-    println!("status: comitting changes...");
+    println!("\x1B[7m STATUS: \x1B[0m committing changes...");
     let args = [
         String::from("commit"),
         String::from("-m"),

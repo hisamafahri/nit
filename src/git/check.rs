@@ -1,7 +1,7 @@
 use crate::helper;
 
 pub fn directory() {
-    println!("status: checking git repository...");
+    println!("\x1B[7m STATUS: \x1B[0m checking git repository...");
     let args = [
         String::from("rev-parse"),
         String::from("--is-inside-work-tree"),
@@ -12,7 +12,7 @@ pub fn directory() {
 }
 
 pub fn branch() -> String {
-    println!("status: checking branches...");
+    println!("\x1B[7m STATUS: \x1B[0m checking branches...");
     let args = [
         String::from("rev-parse"),
         String::from("--abbrev-ref"),
@@ -24,7 +24,7 @@ pub fn branch() -> String {
 }
 
 fn aliases() -> String {
-    println!("status: checking aliases...");
+    println!("\x1B[7m STATUS: \x1B[0m checking aliases...");
     let args = [String::from("remote")];
     let output = helper::command::run(&String::from("git"), &args);
 

@@ -1,7 +1,7 @@
 use crate::helper;
 
 pub fn push(remote: &String, branch: &String) {
-    println!("status: pushing changes...");
+    println!("\x1B[7m STATUS: \x1B[0m pushing changes...");
 
     let args = [
         String::from("push"),
