@@ -1,4 +1,5 @@
 use crate::helper;
+use std::process;
 
 pub fn directory() {
     println!("\x1B[38;5;245m info \x1B[0m checking current directory...");
@@ -8,8 +9,13 @@ pub fn directory() {
     ];
     let output = helper::command::run(&String::from("git"), &args);
 
-    helper::output::ignore(&output);
-    println!("\x1B[38;5;2m success \x1B[0m directory is inside a git work tree!");
+    match output.status.success() {
+        true => println!("\x1B[38;5;2m success \x1B[0m directory is inside a git work tree!"),
+        false => {
+            println!("\x1B[38;5;1m error \x1B[0m current directory is not a git repository");
+            process::exit(1)
+        }
+    }
 }
 
 pub fn branch() -> String {
