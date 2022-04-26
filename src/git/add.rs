@@ -5,5 +5,5 @@ pub fn stage_all() {
     let args = [String::from("add"), String::from(".")];
     let output = helper::command::run(&String::from("git"), &args);
 
-    helper::output::print(&output);
+    helper::output::ignore(&output);
 }
