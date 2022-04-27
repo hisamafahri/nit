@@ -1,10 +1,20 @@
 ## nit - A git CLI wrapper to make your git better
 
+---
+
 ![cover](https://i.imgur.com/GuMKIgz.png)
+
+[![Build](https://github.com/hisamafahri/nit/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/hisamafahri/nit/actions/workflows/build.yml)
+[![Release](https://github.com/hisamafahri/nit/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/hisamafahri/nit/actions/workflows/release.yml)
 
 A CLI to replace your `git` command, so your git workflow can become more consistent, and fun. Also, commit message can partially follow [the Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) ecosystem. And yes, it is build on top of [Rust](https://www.rust-lang.org/)
 
-## Install From Source
+
+## Install with Binaries
+
+You can download the latest version of this CLI from the [Release Page](https://github.com/hisamafahri/nit/releases).
+
+## Install from Source
 
 Assuming you have installed [Git](https://github.com/git-guides/install-git) and [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
   
