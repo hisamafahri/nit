@@ -9,6 +9,10 @@
 
 A CLI to replace your `git` command, so your git workflow can become more consistent, and fun. Also, commit message can partially follow [the Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) ecosystem. And yes, it is build on top of [Rust](https://www.rust-lang.org/)
 
+## Requirements
+
+Since this CLI is wrapping the existing [git](https://github.com/git-guides/install-git) CLI, git is required.
+
 
 ## Install with Binaries
 
@@ -16,7 +20,7 @@ You can download the latest version of this CLI from the [Release Page](https://
 
 ## Install from Source
 
-Assuming you have installed [Git](https://github.com/git-guides/install-git) and [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
+Assuming you have installed [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
   
 ```bash
 git clone https://github.com/hisamafahri/nit
