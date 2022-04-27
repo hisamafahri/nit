@@ -5,7 +5,7 @@
 ![cover](https://i.imgur.com/GuMKIgz.png)
 
 [![Build](https://github.com/hisamafahri/nit/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/hisamafahri/nit/actions/workflows/build.yml)
-[![Release](https://github.com/hisamafahri/nit/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/hisamafahri/nit/actions/workflows/release.yml)
+[![Release](https://github.com/hisamafahri/nit/actions/workflows/release.yml/badge.svg?branch=v0.1.1)](https://github.com/hisamafahri/nit/actions/workflows/release.yml)
 
 A CLI to replace your `git` command, so your git workflow can become more consistent, and fun. Also, commit message can partially follow [the Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) ecosystem. And yes, it is build on top of [Rust](https://www.rust-lang.org/)
 
