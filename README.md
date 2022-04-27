@@ -14,60 +14,57 @@ A CLI to replace your `git` command, so your git workflow can become more consis
 Since this CLI is wrapping the existing [git](https://github.com/git-guides/install-git) CLI, git is required.
 
 
-## Install with Binaries
+## Installation
 
-You can download the latest version of this CLI from the [Release Page](https://github.com/hisamafahri/nit/releases).
-
-## Install from Source
-
-Assuming you have installed [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
+- From binaries
   
-```bash
-git clone https://github.com/hisamafahri/nit
-cd nit
-cargo build
-```
+  You can download the latest version of this CLI from the [Release Page](https://github.com/hisamafahri/nit/releases).
 
-Your executable should be available in the `target/debug` directory.
+- From Source
+  
+  Assuming you have installed [Rust](https://www.rust-lang.org/tools/install) in your system, you can clone the repository and build it from source:
+  
+  ```bash
+  git clone https://github.com/hisamafahri/nit
+  cd nit
+  cargo build
+  ```
+  
+  Your executable should be available in the `target/debug` directory.
 
 ## Usage
 
-### Commit Changes
+- Staging changes
 
-To commit staged changes:
+  ```bash
+  # stage specific file
+  nit add # or: nit a
 
-```bash
-nit commit # or: nit c
-```
+  # stage all files
+  nit add --all # or: nit a -a
+  ```
 
-To commit all of the changes in the current directory, you can easily run:
+- Commit changes
 
-```bash
-nit commit --all # or: nit c -a
+  To commit changes:
 
-# This command will substitute:
-# git add .
-# nit commit
-```
+  ```bash
+  # commit staged changes
+  nit commit # or: nit c
 
-By running it, you will add all of the changes in the *current directory* and commit it automatically. :)
+  # commit all files (staged and unstaged)
+  nit commit --all # or: nit c -a
 
-## Pushing Changes
+  # This command will substitute:
+  # nit add --all
+  # nit commit
+  ```
 
-```bash
-nit push # or: nit p
-```
+- Pushing Changes
 
-This command will push your ***current branch*** into your remote repo. If there are multiple remote repo aliases, it will prompt you to choose:
-
-```bash
-$ nit p
-
-? Where you want to push your changes? >
-> remote1: https://github.com/hisamafahri/remote1
-  remote2: https://github.com/hisamafahri/remote2
-  remote3: https://github.com/hisamafahri/remote3
-```
+  ```bash
+  nit push # or: nit p
+  ```
 
 ## Author
 
