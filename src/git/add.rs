@@ -7,3 +7,10 @@ pub fn stage_all() {
 
     helper::output::ignore(&output);
 }
+
+pub fn stage(file: &String) {
+    let args = [String::from("add"), String::from(file)];
+    let output = helper::command::run(&String::from("git"), &args);
+
+    helper::output::ignore(&output);
+}

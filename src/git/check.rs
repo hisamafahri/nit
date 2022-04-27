@@ -53,6 +53,25 @@ pub fn remote() -> std::vec::Vec<std::string::String> {
 
         let result = helper::output::handle(&output);
         places.push(format!("{}: {}", alias, result));
-    };
+    }
     places
+}
+
+pub fn changes() -> std::vec::Vec<std::string::String> {
+    println!("\x1B[38;5;245m info \x1B[0m checking unstaged files...");
+    let mut unstaged = vec![];
+    let args = [
+        String::from("ls-files"),
+        String::from("-om"),
+        String::from("--exclude-standard"),
+    ];
+    let output = helper::command::run(&String::from("git"), &args);
+
+    let files = helper::output::handle(&output);
+
+    let files_split: Vec<&str> = files.split_whitespace().collect();
+    for file in files_split {
+        unstaged.push(format!("{}", file));
+    }
+    unstaged
 }
