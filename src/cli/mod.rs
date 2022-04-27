@@ -21,12 +21,23 @@ pub enum Commands {
     
     /// Push changes into remote repository
     #[clap(alias = "p")]
-    Push
+    Push,
+
+    /// Staged changes
+    #[clap(alias = "a")]
+    Add(Add),
 }
 
 #[derive(Parser)]
 pub struct Commit {
     /// Commit all changes (staged & unstaged changes) on the current working directory
+    #[clap(short, long)]
+    pub all: bool, 
+}
+
+#[derive(Parser)]
+pub struct Add {
+    /// Staged all changes
     #[clap(short, long)]
     pub all: bool, 
 }
