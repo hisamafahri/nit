@@ -46,6 +46,12 @@ fn add(commit: &cli::Add) {
         process::exit(1)
     }
     let files = git::check::changes();
+    
+    if files.is_empty() {
+        println!("\x1B[38;5;1m error \x1B[0m no changes detected");
+        process::exit(1)
+    }
+
     let index_selected = helper::prompt::build::multi_select(
         &String::from("Which files you want to staged?"),
         &files,
