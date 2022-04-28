@@ -26,6 +26,10 @@ pub enum Commands {
     /// Staged changes
     #[clap(alias = "a")]
     Add(Add),
+
+    /// Work with tag object
+    #[clap(alias = "t")]
+    Tag,
 }
 
 #[derive(Parser)]

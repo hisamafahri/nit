@@ -11,6 +11,7 @@ fn main() {
         cli::Commands::Commit(all) => commit(all),
         cli::Commands::Push => push(),
         cli::Commands::Add(all) => add(all),
+        cli::Commands::Tag => tag(),
     }
 }
 
@@ -69,4 +70,8 @@ fn add(commit: &cli::Add) {
     println!("\x1B[38;5;2m success \x1B[0m selected changes staged successfully!");
 
 
+}
+
+fn tag() {
+    println!("Tag command is called!")
 }
