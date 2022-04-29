@@ -2,7 +2,6 @@ use crate::git;
 use crate::helper;
 use std::process;
 
-
 pub fn tag() {
     git::check::directory();
     let tag_options = vec![
@@ -35,9 +34,7 @@ pub fn tag() {
 
     // If user want to add a new tag
     if selected_tag_options == tag_options[1] {
-        let new_tag = helper::prompt::build::input(
-            &String::from("Tag name?"),
-        );
+        let new_tag = helper::prompt::build::input(&String::from("Tag name?"));
         git::tag::add(&new_tag);
         println!("\x1B[38;5;2m success \x1B[0m tag created successfully!");
     }
@@ -52,11 +49,42 @@ pub fn tag() {
             process::exit(1)
         }
 
-        let selected_tag = helper::prompt::build::select(
-            &String::from("Which tag you want to delete?"),
-            &tags,
+        let tag_location_options = vec![
+            String::from("local: Delete a tag in local repository"),
+            String::from("remote: Delete a tag in remote repository"),
+        ];
+        let selected_tag_location_options = helper::prompt::build::select(
+            &String::from("Where is your tag located?"),
+            &tag_location_options,
         );
-        git::tag::delete(&selected_tag);
-        println!("\x1B[38;5;2m success \x1B[0m tag \"{}\" deleted successfully!", selected_tag);
+
+        // If you want to delete a local tag
+        if selected_tag_location_options == tag_location_options[0] {
+            let selected_tag = helper::prompt::build::select(
+                &String::from("Which tag you want to delete?"),
+                &tags,
+            );
+            git::tag::delete_local(&selected_tag);
+            println!(
+                "\x1B[38;5;2m success \x1B[0m local tag \"{}\" deleted successfully!",
+                selected_tag
+            );
+        }
+
+        // If you want to delete a remote tag
+        if selected_tag_location_options == tag_location_options[1] {
+            let remote = git::check::remote();
+            let selected_remote = helper::prompt::build::select(
+                &String::from("Where is the tag located?"),
+                &remote,
+            );
+            let selected_tag = helper::prompt::build::select(
+                &String::from("Which tag you want to delete?"),
+                &tags,
+            );
+            let selected_remote_split: Vec<&str> = selected_remote.split(": ").collect();
+            git::tag::delete_remote(&String::from(selected_remote_split[0]), &selected_tag);
+            println!("\x1B[38;5;2m success \x1B[0m remote tag {} successfully deleted!", selected_tag);
+        }
     }
 }
