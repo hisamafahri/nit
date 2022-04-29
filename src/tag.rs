@@ -8,7 +8,6 @@ pub fn tag() {
     let tag_options = vec![
         String::from("list: List all tags"),
         String::from("add: Add a new tag"),
-        String::from("push: Push a tag to remote repository"),
         String::from("delete: Remove an existing tag"),
     ];
     let selected_tag_options = helper::prompt::build::select(
@@ -43,13 +42,8 @@ pub fn tag() {
         println!("\x1B[38;5;2m success \x1B[0m tag created successfully!");
     }
 
-    // If user want to push a tag
-    if selected_tag_options == tag_options[2] {
-        println!("\x1B[38;5;2m success \x1B[0m push tag command is called!");
-    }
-
     // If user want to delete a tag
-    if selected_tag_options == tag_options[3] {
+    if selected_tag_options == tag_options[2] {
         let tags = git::tag::list();
 
         // if no tags are detected

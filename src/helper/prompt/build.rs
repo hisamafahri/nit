@@ -7,7 +7,7 @@ pub fn select(question: &String, options: &std::vec::Vec<std::string::String>) -
         .items(&options[..])
         .interact()
         .unwrap();
-    return format!("{}", options[selected_option]);
+    return format!("{}", options[selected_option].trim());
 }
 
 pub fn multi_select(question: &String, options: &std::vec::Vec<std::string::String>) -> std::vec::Vec<usize> {

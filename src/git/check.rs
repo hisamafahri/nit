@@ -52,7 +52,7 @@ pub fn remote() -> std::vec::Vec<std::string::String> {
         let output = helper::command::run(&String::from("git"), &args);
 
         let result = helper::output::handle(&output);
-        places.push(format!("{}: {}", alias, result));
+        places.push(format!("{}: {}", alias.trim(), result.trim()));
     }
     places
 }
@@ -71,7 +71,7 @@ pub fn changes() -> std::vec::Vec<std::string::String> {
 
     let files_split: Vec<&str> = files.split_whitespace().collect();
     for file in files_split {
-        unstaged.push(format!("{}", file));
+        unstaged.push(format!("{}", file.trim()));
     }
     unstaged
 }

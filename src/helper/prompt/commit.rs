@@ -36,5 +36,5 @@ pub fn commit_prompt() -> String {
 
     let type_split: Vec<&str> = types[selected_type].split(": ").collect();
 
-    format!("{}({}): {}", type_split[0], scope, message)
+    format!("{}({}): {}", type_split[0].trim(), scope.trim(), message.trim())
 }

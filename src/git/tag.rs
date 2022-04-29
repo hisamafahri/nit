@@ -22,7 +22,7 @@ pub fn list() -> std::vec::Vec<std::string::String> {
 
     let tags_split: Vec<&str> = tags_string.split_whitespace().collect();
     for tag in tags_split {
-        tags.push(format!("{}", tag));
+        tags.push(format!("{}", tag.trim()));
     }
     tags
 }
