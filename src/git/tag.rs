@@ -26,3 +26,14 @@ pub fn list() -> std::vec::Vec<std::string::String> {
     }
     tags
 }
+
+pub fn delete(tag: &String) {
+    println!("\x1B[38;5;245m info \x1B[0m deleting tag \"{}\"...", tag);
+    let args = [
+        String::from("tag"),
+        String::from("--delete"),
+        String::from(tag),
+    ];
+    let output = helper::command::run(&String::from("git"), &args);
+    helper::output::print_err(&output);
+}
