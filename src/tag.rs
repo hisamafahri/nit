@@ -41,7 +41,7 @@ pub fn tag() {
 
     // If user want to delete a tag
     if selected_tag_options == tag_options[2] {
-        let tags = git::tag::list();
+        let mut tags = git::tag::list();
 
         // if no tags are detected
         if tags.is_empty() {
@@ -74,17 +74,29 @@ pub fn tag() {
         // If you want to delete a remote tag
         if selected_tag_location_options == tag_location_options[1] {
             let remote = git::check::remote();
-            let selected_remote = helper::prompt::build::select(
-                &String::from("Where is the tag located?"),
-                &remote,
-            );
+            tags.push(String::from("Input tag manually..."));
+            let selected_remote =
+                helper::prompt::build::select(&String::from("Where is the tag located?"), &remote);
             let selected_tag = helper::prompt::build::select(
                 &String::from("Which tag you want to delete?"),
                 &tags,
             );
             let selected_remote_split: Vec<&str> = selected_remote.split(": ").collect();
+
+            if selected_tag == String::from("Input tag manually...") {
+                let input_tag = helper::prompt::build::input(&String::from("Tag name?"));
+                git::tag::delete_remote(&String::from(selected_remote_split[0]), &input_tag);
+                println!(
+                    "\x1B[38;5;2m success \x1B[0m remote tag {} successfully deleted!",
+                    input_tag
+                );
+                process::exit(1)
+            }
             git::tag::delete_remote(&String::from(selected_remote_split[0]), &selected_tag);
-            println!("\x1B[38;5;2m success \x1B[0m remote tag {} successfully deleted!", selected_tag);
+            println!(
+                "\x1B[38;5;2m success \x1B[0m remote tag {} successfully deleted!",
+                selected_tag
+            );
         }
     }
 }
