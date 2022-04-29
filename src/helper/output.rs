@@ -2,7 +2,7 @@ use std::process;
 
 pub fn print(output: &process::Output) {
     match output.status.success() {
-        true => println!("{}", String::from_utf8_lossy(&output.stdout)),
+        true => print!("{}", String::from_utf8_lossy(&output.stdout)),
         false => {
             println!("\x1B[38;5;1m error \x1B[0m {}", String::from_utf8_lossy(&output.stdout));
             process::exit(1)
@@ -12,7 +12,7 @@ pub fn print(output: &process::Output) {
 
 pub fn print_err(output: &process::Output) {
     match output.status.success() {
-        true => println!("{}", String::from_utf8_lossy(&output.stdout)),
+        true => print!("{}", String::from_utf8_lossy(&output.stdout)),
         false => {
             println!("\x1B[38;5;1m error \x1B[0m {}", String::from_utf8_lossy(&output.stderr));
             process::exit(1)

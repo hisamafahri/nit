@@ -1,4 +1,4 @@
-use dialoguer::{theme::ColorfulTheme, Select, MultiSelect};
+use dialoguer::{theme::ColorfulTheme, Select, MultiSelect, Input};
 
 pub fn select(question: &String, options: &std::vec::Vec<std::string::String>) -> String {
     let selected_option = Select::with_theme(&ColorfulTheme::default())
@@ -18,4 +18,12 @@ pub fn multi_select(question: &String, options: &std::vec::Vec<std::string::Stri
         .unwrap();
     
     return selections;
+}
+
+pub fn input(question: &String) -> String {
+    let scope: String = Input::with_theme(&ColorfulTheme::default())
+        .with_prompt(question)
+        .interact_text()
+        .unwrap();
+    return scope
 }

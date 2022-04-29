@@ -36,6 +36,10 @@ pub fn tag() {
 
     // If user want to add a new tag
     if selected_tag_options == tag_options[1] {
-        git::tag::add(&String::from("v0.1.1"));
+        let new_tag = helper::prompt::build::input(
+            &String::from("Tag name?"),
+        );
+        git::tag::add(&new_tag);
+        println!("\x1B[38;5;2m success \x1B[0m tag created successfully!");
     }
 }
