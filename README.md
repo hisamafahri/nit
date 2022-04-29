@@ -58,10 +58,16 @@ This cli is wrapping the existing [git cli](https://https://git-scm.com/). To us
   # nit commit
   ```
 
-- Pushing Changes
+- Pushing changes or tag
 
   ```bash
   nit push # or: nit p
+  ```
+
+- List, add, or remove tag
+
+  ```bash
+  nit tag # or: nit t
   ```
 
 ## Author
