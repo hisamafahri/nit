@@ -6,6 +6,7 @@ mod helper;
 mod commit;
 mod push;
 mod add;
+mod tag;
 
 fn main() {
     let cli = cli::Cli::parse();
@@ -14,10 +15,6 @@ fn main() {
         cli::Commands::Commit(all) => commit::commit(all),
         cli::Commands::Push => push::push(),
         cli::Commands::Add(all) => add::add(all),
-        cli::Commands::Tag => tag(),
+        cli::Commands::Tag => tag::tag(),
     }
-}
-
-fn tag() {
-    println!("Tag command is called!")
 }
