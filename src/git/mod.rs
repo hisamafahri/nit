@@ -3,3 +3,4 @@ pub mod check;
 pub mod commit;
 pub mod push;
 pub mod tag;
+pub mod clone;

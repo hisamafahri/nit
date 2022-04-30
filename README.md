@@ -34,6 +34,12 @@ This cli is wrapping the existing [git cli](https://https://git-scm.com/). To us
 
 ## Usage
 
+- Clone a repository
+
+  ```bash
+  nit clone # or: nit cl
+  ```
+
 - Staging changes
 
   ```bash

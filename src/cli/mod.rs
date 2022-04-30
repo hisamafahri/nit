@@ -3,7 +3,7 @@ use clap::{Parser, Subcommand};
 #[derive(Parser)]
 #[clap(name = "nit")]
 #[clap(author = "Hisam Fahri <me@hisamafahri.com>")]
-#[clap(version = "0.1.2")]
+#[clap(version = "0.1.3")]
 #[clap(about = "nit helps you wrap your git commands")]
 #[clap(long_about = "Wrap your git commands with nit to make your workflow faster and more consistent")]
 #[clap(propagate_version = true)]
@@ -19,7 +19,7 @@ pub enum Commands {
     #[clap(alias = "c")]
     Commit(Commit),
     
-    /// Push changes into remote repository
+    /// Push changes or tag into remote repository
     #[clap(alias = "p")]
     Push,
 
@@ -30,6 +30,10 @@ pub enum Commands {
     /// Work with tag object
     #[clap(alias = "t")]
     Tag,
+
+    /// Clone a remote repository
+    #[clap(alias = "cl")]
+    Clone,
 }
 
 #[derive(Parser)]

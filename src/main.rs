@@ -7,6 +7,7 @@ mod commit;
 mod push;
 mod add;
 mod tag;
+mod clone;
 
 fn main() {
     let cli = cli::Cli::parse();
@@ -16,5 +17,6 @@ fn main() {
         cli::Commands::Push => push::push(),
         cli::Commands::Add(all) => add::add(all),
         cli::Commands::Tag => tag::tag(),
+        cli::Commands::Clone => clone::clone(),
     }
 }
