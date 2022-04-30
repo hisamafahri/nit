@@ -9,3 +9,4 @@ edition = "2021"
 clap = { version = "3.1.12", features = ["derive"] }
 dialoguer = "0.10.0"
 futures-lite = "1.12.0"
+url = { version = "2" }
