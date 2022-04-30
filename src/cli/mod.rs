@@ -30,6 +30,10 @@ pub enum Commands {
     /// Work with tag object
     #[clap(alias = "t")]
     Tag,
+
+    /// Clone a remote repository
+    #[clap(alias = "cl")]
+    Clone,
 }
 
 #[derive(Parser)]
