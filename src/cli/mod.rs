@@ -34,6 +34,10 @@ pub enum Commands {
     /// Clone a remote repository
     #[clap(alias = "cl")]
     Clone,
+
+    /// Pull updates from remote repository
+    #[clap(alias = "pl")]
+    Pull,
 }
 
 #[derive(Parser)]
