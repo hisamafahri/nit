@@ -76,6 +76,12 @@ This cli is wrapping the existing [git cli](https://https://git-scm.com/). To us
   nit tag # or: nit t
   ```
 
+- Pulling current branch's changes
+
+  ```bash
+  nit pull # or: nit pl
+  ```
+
 ## Author
 
 [Hisam A Fahri](https://hisamafahri.com): [@hisamafahri](https://github.com/hisamafahri)
