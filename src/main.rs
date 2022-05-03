@@ -8,6 +8,7 @@ mod push;
 mod add;
 mod tag;
 mod clone;
+mod pull;
 
 fn main() {
     let cli = cli::Cli::parse();
@@ -18,5 +19,6 @@ fn main() {
         cli::Commands::Add(all) => add::add(all),
         cli::Commands::Tag => tag::tag(),
         cli::Commands::Clone => clone::clone(),
+        cli::Commands::Pull => pull::pull(),
     }
 }
