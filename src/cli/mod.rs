@@ -38,6 +38,11 @@ pub enum Commands {
     /// Pull updates from remote repository
     #[clap(alias = "pl")]
     Pull,
+    
+    /// Working with branch
+    #[clap(alias = "b")]
+    Branch,
+    
 }
 
 #[derive(Parser)]
