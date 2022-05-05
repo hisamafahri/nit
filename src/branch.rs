@@ -26,16 +26,16 @@ pub fn branch() {
         println!("User want to switch branches");
         process::exit(1);
     }
-    
+
     // If user want to create a new branch
     if selected_branch_options == branch_options[2] {
-        println!("User want to create a new branch"):
+        println!("User want to create a new branch");
         process::exit(1);
     }
-    
+
     // If user want to delete a branch
     if selected_branch_options == branch_options[3] {
-        println!("User want to delete a branch"):
+        println!("User want to delete a branch");
         process::exit(1);
     }
 }
